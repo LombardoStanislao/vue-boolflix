@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <script src="https://kit.fontawesome.com/7b09a46f67.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" charset="utf-8"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <link rel="stylesheet" href="style.css">
@@ -38,7 +39,11 @@
                         <p class="movie-attributes">{{movie.original_language}}</p>
 
                         <p class="movie-properties">Voto:</p>
-                        <p class="movie-attributes">{{movie.vote_average}}</p>
+                        <div class="stars">
+                            <i v-for="star in 5" class="far fa-star"></i>
+                        </div>
+
+                        <p class="movie-attributes">{{Math.round(movie.vote_average / 2)}}</p>
 
                     </div>
 

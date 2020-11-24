@@ -10,6 +10,7 @@ var app = new Vue({
             userSearch: '',
             arraySearchedMovies: [],
             noMovieFound: false,
+            numberStar: 0,
 
         },
 
@@ -29,6 +30,16 @@ var app = new Vue({
                         console.log(results.data.results);
 
                         this.arraySearchedMovies = results.data.results
+
+// FACCIO UN CICLO FOR EACH PER PRENDER SOLO IL VOTO DEL FILM E DIVIDERLO PER DUE
+
+                        this.arraySearchedMovies.forEach((movie, i) => {
+                            console.log(Math.round(movie.vote_average/2));
+
+                            this.numberStar = Math.round(movie.vote_average/2)
+
+                        });
+
 
                         if (this.arraySearchedMovies.length == 0) {
 
