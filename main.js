@@ -1,7 +1,7 @@
 // MILESTONE 2
 // La seconda milestone è a sua volta suddivisa in 3 punti:
 //
-// 1- sostituire il voto numerico su base 10 in un voto su base 5 e visualizzare in totale 5 stelline, di cui tante piene quanto è il voto arrotondato (non gestiamo stelline a metà). Ad esempio, se il voto è 8.2, dobbiamo visualizzare 4 stelline piene e 1 stellina vuota (in totale sempre 5)
+
 
 var app = new Vue({
     el: '#root',
@@ -10,7 +10,7 @@ var app = new Vue({
             userSearch: '',
             arraySearchedMovies: [],
             noMovieFound: false,
-        
+            flags:[],
 
         },
 
@@ -33,15 +33,7 @@ var app = new Vue({
 
 // FACCIO UN CICLO FOR EACH PER PRENDER SOLO IL VOTO DEL FILM E DIVIDERLO PER DUE
 
-                        this.arraySearchedMovies.forEach((movie, i) => {
 
-                            console.log(Math.round(movie.vote_average/2));
-
-                            Math.round(movie.vote_average/2);
-
-
-
-                        });
 
 
                         if (this.arraySearchedMovies.length == 0) {
@@ -52,9 +44,13 @@ var app = new Vue({
                     });
 
                 }
+            },
+
+            countingStars(vote) {
+
+                return Math.round(vote/2);
+
             }
-
-
 
         },
 

@@ -36,13 +36,16 @@
                         <p class="movie-attributes">{{movie.original_title}}</p>
 
                         <p class="movie-properties">Lingua originale:</p>
-                        <p class="movie-attributes">{{movie.original_language}}</p>
+                        <img :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
 
                         <p class="movie-properties">Voto:</p>
+
                         <div class="stars">
 
-                            <i v-for="star in Math.round(movie.vote_average / 2)" class="fas fa-star"></i>
-                            <i v-for="star in (5- Math.round(movie.vote_average / 2))" class="far fa-star"></i>
+                            <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in countingStars(movie.vote_average)" class="fas fa-star"></i>
+                            <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in (5 - countingStars(movie.vote_average))" class="far fa-star"></i>
+
+                            <p v-if="countingStars(movie.vote_average) == 0">Nessun voto disponibile</p>
 
                         </div>
 
