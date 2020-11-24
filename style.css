@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+header {
+    height: 100px;
+    background-color: #032541;
+}
+
+
+#root {
+    height: 100vh;
+    background-color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#searchbar {
+    width: 500px;
+    margin-top: 20px;
+}
