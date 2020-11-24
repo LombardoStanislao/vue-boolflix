@@ -5,7 +5,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" charset="utf-8"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <link rel="stylesheet" href="style.css">
-        <title>API | Dischi Musicali</title>
+        <title>API | Libreria Film e Serie TV</title>
     </head>
     <body>
         <header>
@@ -21,9 +21,19 @@
 
                 <div class="searchbox">
 
-                    <input id="searchbar" type="search" name="" value="">
-                    <button type="button" name="button">Cerca</button>
+                    <input id="searchbar" type="search" name="" v-model="userSearch" value="" v-on:keyup.enter="searchMovies()">
+                    <button type="button" name="button" @click="searchMovies()">Cerca</button>
                 </div>
+
+                <div class="container-card">
+
+                    <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
+                        <p>{{ movie.title }}</p>
+
+                    </div>
+
+                </div>
+
 
 
 

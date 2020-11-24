@@ -29,3 +29,18 @@ header {
     width: 500px;
     margin-top: 20px;
 }
+
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.movie-card {
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 20px;
+
+}
