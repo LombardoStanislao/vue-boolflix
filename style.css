@@ -11,10 +11,11 @@ header {
     background-color: #032541;
 }
 
-h1 {
+h1, h3 {
     color:  #032541;
     margin-top: 30px;
 }
+
 
 
 #root {
