@@ -40,7 +40,7 @@
 
                         <p class="movie-properties">Voto:</p>
                         <div class="stars">
-                            <i v-for="star in 5" class="far fa-star"></i>
+                            <i v-for="star in stars()" class="far fa-star"></i>
                         </div>
 
                         <p class="movie-attributes">{{Math.round(movie.vote_average / 2)}}</p>

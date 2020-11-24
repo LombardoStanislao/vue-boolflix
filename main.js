@@ -36,7 +36,13 @@ var app = new Vue({
                         this.arraySearchedMovies.forEach((movie, i) => {
                             console.log(Math.round(movie.vote_average/2));
 
-                            this.numberStar = Math.round(movie.vote_average/2)
+                            let mine = this
+
+                                function stars() {
+                                    return mine.numberStar = Math.round(movie.vote_average/2)
+                                }
+
+
 
                         });
 
