@@ -11,10 +11,15 @@ header {
     background-color: #032541;
 }
 
+h1 {
+    color:  #032541;
+    margin-top: 30px;
+}
+
 
 #root {
     height: 100vh;
-    background-color: white;
+    background-color: #aad9ff;
 }
 
 .container {
@@ -28,6 +33,20 @@ header {
 #searchbar {
     width: 500px;
     margin-top: 20px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 0.2px solid #032541;
+    outline: none;
+}
+
+#search-button {
+    padding: 8px;
+    border-radius: 10px;
+    border: 0.2px solid #032541;
+    background-color: white;
+    outline: none;
+    cursor: pointer;
+    color: #032541;
 }
 
 .container-card {
@@ -40,7 +59,27 @@ header {
     width: 200px;
     height: 300px;
     padding: 10px;
-    border: 1px solid black;
+    background-color: #032541;
+    border-radius: 10px;
+    -webkit-box-shadow: 6px 7px 12px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    6px 7px 12px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         6px 7px 12px 0px rgba(50, 50, 50, 0.75);
+    color: white;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
+
+}
+
+
+.movie-properties, .movie-attributes {
+    margin-top: 7px;
+    text-align: center;
+}
+
+.movie-properties {
+    font-weight: bold;
 }

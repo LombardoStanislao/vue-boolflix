@@ -21,14 +21,24 @@
 
                 <div class="searchbox">
 
-                    <input id="searchbar" type="search" name="" v-model="userSearch" value="" v-on:keyup.enter="searchMovies()">
-                    <button type="button" name="button" @click="searchMovies()">Cerca</button>
+                    <input id="searchbar" type="search" name="" v-model="userSearch" value="" v-on:keyup.enter="searchMovies()" placeholder="Cerca un film">
+                    <button id="search-button" type="button" name="button" @click="searchMovies()">Cerca</button>
                 </div>
 
                 <div class="container-card">
 
                     <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
-                        <p>{{ movie.title }}</p>
+                        <p class="movie-properties">Titolo:</p>
+                        <p class="movie-attributes">{{ movie.title }}</p>
+
+                        <p class="movie-properties">Titolo in lingua originale:</p>
+                        <p class="movie-attributes">{{movie.original_title}}</p>
+
+                        <p class="movie-properties">Lingua originale:</p>
+                        <p class="movie-attributes">{{movie.original_language}}</p>
+
+                        <p class="movie-properties">Voto:</p>
+                        <p class="movie-attributes">{{movie.vote_average}}</p>
 
                     </div>
 
