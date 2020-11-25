@@ -150,6 +150,7 @@ h1, h3 {
 
 .movie-card {
     width: 342px;
+    max-height: 513px;
     border-radius: 10px;
     -webkit-box-shadow: 6px 7px 12px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    6px 7px 12px 0px rgba(50, 50, 50, 0.75);
@@ -168,6 +169,7 @@ h1, h3 {
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .movie-information {
@@ -193,4 +195,16 @@ h1, h3 {
 
 .movie-properties {
     font-weight: bold;
+}
+
+.fa-star {
+    color: #ffa41c;
+}
+
+.plot {
+    flex: 1;
+    min-width: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-wrap;
 }

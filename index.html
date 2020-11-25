@@ -124,6 +124,11 @@
 
                                 </div>
 
+                                <p class="movie-properties">Trama:</p>
+                                <p v-if="movie.overview != '' " class="movie-attributes plot">{{movie.overview}}</p>
+
+                                <p v-else class="movie-attributes">Trama non trovata</p>
+
                             </div>
 
 
