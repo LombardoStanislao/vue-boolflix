@@ -30,13 +30,13 @@
 
                     <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
 
-                        <img class="movie-poster" :src="posterNotFound(movie)" :alt="movie.title">
+                        <img class="movie-poster" :src="posterFound(movie)" :alt="movie.title">
 
                         <p class="movie-properties">Titolo:</p>
                         <p class="movie-attributes">{{ movie.title }}</p>
 
-                        <p class="movie-properties">Titolo in lingua originale:</p>
-                        <p class="movie-attributes">{{movie.original_title}}</p>
+                        <p v-if="!movie.title === movie.original_title" class="movie-properties">Titolo in lingua originale:</p>
+                        <p v-if="!movie.title === movie.original_title" class="movie-attributes">{{movie.original_title}}</p>
 
                         <p class="movie-properties">Lingua originale:</p>
                         <img :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
@@ -56,12 +56,12 @@
 
                     <div class="movie-card" v-for="(series, index) in arraySearchedSeries">
 
-                        <img class="movie-poster" :src="posterNotFound(series)" :alt="series.name">
+                        <img class="movie-poster" :src="posterFound(series)" :alt="series.name">
                         <p class="movie-properties">Titolo:</p>
                         <p class="movie-attributes">{{ series.name }}</p>
 
-                        <p class="movie-properties">Titolo in lingua originale:</p>
-                        <p class="movie-attributes">{{series.original_name}}</p>
+                        <p v-if="!series.name === series.original_name" class="movie-properties">Titolo in lingua originale:</p>
+                        <p v-if="!series.title === series.original_name" class="movie-attributes">{{series.original_name}}</p>
 
                         <p class="movie-properties">Lingua originale:</p>
                         <img :src="'flags/'+series.original_language+'-flag.png'" :alt="series.original_language">

@@ -1,7 +1,4 @@
-// MILESTONE 2
-// La seconda milestone è a sua volta suddivisa in 3 punti:
-//
-// 3- aggiungere ai risultati anche le serie tv. Attenzione che alcune chiavi per le serie tv sono diverse da quelle dei film, come ad esempio "title" per i film e "name" per le serie
+
 
 
 var app = new Vue({
@@ -69,13 +66,17 @@ var app = new Vue({
                 }
             },
 
-            posterNotFound(element) {
+            posterFound(element) {
 
-                if (element.poster_path == 'null') {
-                    element.poster_path = 'locandina.jpg'
-                } else {
-                    element.poster_path = 'https://image.tmdb.org/t/p/' + 'w342' + element.poster_path
+                let poster = 'locandina.jpg';
+
+                if (element.poster_path != null) {
+
+                    poster = 'https://image.tmdb.org/t/p/' + 'w342' + element.poster_path;
+
                 }
+
+                return poster;
             },
 
             countingStars(vote) {
