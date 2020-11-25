@@ -19,7 +19,7 @@ h1, h3 {
 
 
 #root {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #aad9ff;
 
 }

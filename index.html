@@ -51,6 +51,29 @@
 
                     </div>
 
+                    <div class="movie-card" v-for="(series, index) in arraySearchedSeries">
+                        <p class="movie-properties">Titolo:</p>
+                        <p class="movie-attributes">{{ series.name }}</p>
+
+                        <p class="movie-properties">Titolo in lingua originale:</p>
+                        <p class="movie-attributes">{{series.original_name}}</p>
+
+                        <p class="movie-properties">Lingua originale:</p>
+                        <img :src="'flags/'+series.original_language+'-flag.png'" :alt="series.original_language">
+
+                        <p class="movie-properties">Voto:</p>
+
+                        <div class="stars">
+
+                            <i v-if="countingStars(series.vote_average) >= 1" v-for="star in countingStars(series.vote_average)" class="fas fa-star"></i>
+                            <i v-if="countingStars(series.vote_average) >= 1" v-for="star in (5 - countingStars(series.vote_average))" class="far fa-star"></i>
+
+                            <p v-if="countingStars(series.vote_average) == 0">Nessun voto disponibile</p>
+
+                        </div>
+
+                    </div>
+
                     <h3 v-if="noMovieFound == true">La ricerca non ha prodotto alcun risultato</h3>
 
                 </div>
