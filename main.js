@@ -8,7 +8,9 @@ var app = new Vue({
             userSearch: '',
             arraySearchedMovies: [],
             arraySearchedSeries: [],
+            listFlag:['it', 'en', 'de', 'es', 'fr', 'ru'],
             noMovieFound: false,
+
 
         },
 
@@ -85,7 +87,12 @@ var app = new Vue({
 
                 return Math.round(vote/2);
 
+            },
+
+            foundFlag(language) {
+                return this.listFlag.includes(language);
             }
+
 
         },
 

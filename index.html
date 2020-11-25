@@ -91,7 +91,7 @@
 
                 <h1>Benvenuto, esplora il nostro catologo</h1>
 
-            
+
                 <div class="container-card">
 
                     <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
@@ -107,7 +107,9 @@
                             <p v-if="movie.title !== movie.original_title" class="movie-attributes">{{movie.original_title}}</p>
 
                             <p class="movie-properties">Lingua originale:</p>
-                            <img :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
+                            <img v-if="foundFlag(movie.original_language)" :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
+
+                            <p v-else class="movie-attributes">{{movie.original_language}}</p>
 
                             <p class="movie-properties">Voto:</p>
 
