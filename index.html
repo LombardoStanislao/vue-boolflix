@@ -50,6 +50,14 @@
 
                 </div>
                 <div class="navbar-right">
+
+                    <div class="searching-container">
+                        <i id="lens" class="fas fa-search"></i>
+                        <input id="search-title" type="search" name="" value=""
+                        placeholder="Movies, Series etc..."
+                        v-model="userSearch" v-on:keyup="searchMovies(); searchSeries()">
+                    </div>
+
                     <ul>
                         <li class="menu">
                             <a href="#">
@@ -83,37 +91,38 @@
 
                 <h1>Benvenuto, esplora il nostro catologo</h1>
 
-                <div class="searchbox">
-
-                    <input id="searchbar" type="search" name="" v-model="userSearch" value="" v-on:keyup.enter="searchMovies(); searchSeries()" placeholder="Cerca un film">
-                    <button id="search-button" type="button" name="button" @click="searchMovies(); searchSeries()">Cerca</button>
-                </div>
-
+            
                 <div class="container-card">
 
                     <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
 
                         <img class="movie-poster" :src="posterFound(movie)" :alt="movie.title">
 
-                        <p class="movie-properties">Titolo:</p>
-                        <p class="movie-attributes">{{ movie.title }}</p>
+                        <div class="movie-info">
 
-                        <p v-if="!movie.title === movie.original_title" class="movie-properties">Titolo in lingua originale:</p>
-                        <p v-if="!movie.title === movie.original_title" class="movie-attributes">{{movie.original_title}}</p>
+                            <p class="movie-properties">Titolo:</p>
+                            <p class="movie-attributes">{{ movie.title }}</p>
 
-                        <p class="movie-properties">Lingua originale:</p>
-                        <img :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
+                            <p v-if="movie.title !== movie.original_title" class="movie-properties">Titolo in lingua originale:</p>
+                            <p v-if="movie.title !== movie.original_title" class="movie-attributes">{{movie.original_title}}</p>
 
-                        <p class="movie-properties">Voto:</p>
+                            <p class="movie-properties">Lingua originale:</p>
+                            <img :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
 
-                        <div class="stars">
+                            <p class="movie-properties">Voto:</p>
 
-                            <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in countingStars(movie.vote_average)" class="fas fa-star"></i>
-                            <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in (5 - countingStars(movie.vote_average))" class="far fa-star"></i>
+                            <div class="stars">
 
-                            <p v-if="countingStars(movie.vote_average) == 0">Nessun voto disponibile</p>
+                                <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in countingStars(movie.vote_average)" class="fas fa-star"></i>
+                                <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in (5 - countingStars(movie.vote_average))" class="far fa-star"></i>
+
+                                <p v-if="countingStars(movie.vote_average) == 0">Nessun voto disponibile</p>
+
+                            </div>
 
                         </div>
+
+
 
                     </div>
 

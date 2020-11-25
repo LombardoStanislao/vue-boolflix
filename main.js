@@ -22,6 +22,7 @@ var app = new Vue({
                         params: {
                             api_key: '567c8d726bbaa8119557c0173dda861b',
                             query: this.userSearch,
+                            language: 'it',
 
                         }
                     }).then((results) => {
@@ -48,6 +49,7 @@ var app = new Vue({
                         params: {
                             api_key: '567c8d726bbaa8119557c0173dda861b',
                             query: this.userSearch,
+                            language: 'it',
 
                         }
                     }).then((results) => {
