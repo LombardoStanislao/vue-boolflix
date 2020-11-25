@@ -22,13 +22,16 @@
 
                 <div class="searchbox">
 
-                    <input id="searchbar" type="search" name="" v-model="userSearch" value="" v-on:keyup.enter="searchMovies()" placeholder="Cerca un film">
-                    <button id="search-button" type="button" name="button" @click="searchMovies()">Cerca</button>
+                    <input id="searchbar" type="search" name="" v-model="userSearch" value="" v-on:keyup.enter="searchMovies(); searchSeries()" placeholder="Cerca un film">
+                    <button id="search-button" type="button" name="button" @click="searchMovies(); searchSeries()">Cerca</button>
                 </div>
 
                 <div class="container-card">
 
                     <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
+
+                        <img class="movie-poster" :src="posterNotFound(movie)" :alt="movie.title">
+
                         <p class="movie-properties">Titolo:</p>
                         <p class="movie-attributes">{{ movie.title }}</p>
 
@@ -52,6 +55,8 @@
                     </div>
 
                     <div class="movie-card" v-for="(series, index) in arraySearchedSeries">
+
+                        <img class="movie-poster" :src="posterNotFound(series)" :alt="series.name">
                         <p class="movie-properties">Titolo:</p>
                         <p class="movie-attributes">{{ series.name }}</p>
 

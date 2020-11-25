@@ -39,6 +39,14 @@ var app = new Vue({
                         }
 
                     });
+
+                }
+            },
+
+            searchSeries() {
+
+                if (this.userSearch != '') {
+
                     axios.get('https://api.themoviedb.org/3/search/tv', {
                         params: {
                             api_key: '567c8d726bbaa8119557c0173dda861b',
@@ -58,6 +66,15 @@ var app = new Vue({
 
                     });
 
+                }
+            },
+
+            posterNotFound(element) {
+
+                if (element.poster_path == 'null') {
+                    element.poster_path = 'locandina.jpg'
+                } else {
+                    element.poster_path = 'https://image.tmdb.org/t/p/' + 'w342' + element.poster_path
                 }
             },
 

@@ -25,7 +25,7 @@ h1, h3 {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin:auto;
     display: flex;
     align-items: center;
@@ -58,8 +58,8 @@ h1, h3 {
 }
 
 .movie-card {
-    width: 200px;
-    height: 330px;
+    width: 380px;
+    height: 800px;
     padding: 10px;
     background-color: #032541;
     border-radius: 10px;
@@ -81,4 +81,9 @@ h1, h3 {
 
 .movie-properties {
     font-weight: bold;
+}
+
+.movie-poster {
+    width: 100%;
+    object-fit: contain;
 }
