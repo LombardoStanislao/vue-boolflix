@@ -33,6 +33,7 @@ header {
 #logo {
     color: #cd0c15;
     margin-right: 20px;
+    text-transform: uppercase;
 
 }
 
@@ -148,10 +149,7 @@ h1, h3 {
 }
 
 .movie-card {
-    width: 380px;
-    height: 800px;
-    padding: 10px;
-    background-color: #032541;
+    width: 342px;
     border-radius: 10px;
     -webkit-box-shadow: 6px 7px 12px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow:    6px 7px 12px 0px rgba(50, 50, 50, 0.75);
@@ -162,16 +160,32 @@ h1, h3 {
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 }
 
 .movie-info {
-
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
 }
 
+.movie-information {
+    display: none;
+}
+
+.movie-card:hover .movie-information {
+    display: block;
+}
+
+.movie-card:hover .movie-poster {
+    display: none;
+}
+
+.movie-poster {
+    width: 342px;
+    height: 513px;
+}
 
 .movie-properties, .movie-attributes {
     text-align: center;
@@ -179,9 +193,4 @@ h1, h3 {
 
 .movie-properties {
     font-weight: bold;
-}
-
-.movie-poster {
-    width: 100%;
-    object-fit: contain;
 }

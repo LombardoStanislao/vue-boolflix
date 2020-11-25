@@ -10,6 +10,7 @@ var app = new Vue({
             arraySearchedSeries: [],
             listFlag:['it', 'en', 'de', 'es', 'fr', 'ru'],
             noMovieFound: false,
+            showInformation: false,
 
 
         },
@@ -91,6 +92,10 @@ var app = new Vue({
 
             foundFlag(language) {
                 return this.listFlag.includes(language);
+            },
+
+            fileInformation() {
+                return this.showInformation = true;
             }
 
 

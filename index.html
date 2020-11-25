@@ -98,31 +98,37 @@
 
                         <img class="movie-poster" :src="posterFound(movie)" :alt="movie.title">
 
-                        <div class="movie-info">
+                        <div class="movie-information">
 
-                            <p class="movie-properties">Titolo:</p>
-                            <p class="movie-attributes">{{ movie.title }}</p>
+                            <div class="movie-info">
 
-                            <p v-if="movie.title !== movie.original_title" class="movie-properties">Titolo in lingua originale:</p>
-                            <p v-if="movie.title !== movie.original_title" class="movie-attributes">{{movie.original_title}}</p>
+                                <p class="movie-properties">Titolo:</p>
+                                <p class="movie-attributes">{{ movie.title }}</p>
 
-                            <p class="movie-properties">Lingua originale:</p>
-                            <img v-if="foundFlag(movie.original_language)" :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
+                                <p v-if="movie.title !== movie.original_title" class="movie-properties">Titolo in lingua originale:</p>
+                                <p v-if="movie.title !== movie.original_title" class="movie-attributes">{{movie.original_title}}</p>
 
-                            <p v-else class="movie-attributes">{{movie.original_language}}</p>
+                                <p class="movie-properties">Lingua originale:</p>
+                                <img v-if="foundFlag(movie.original_language)" :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
 
-                            <p class="movie-properties">Voto:</p>
+                                <p v-else class="movie-attributes">{{movie.original_language}}</p>
 
-                            <div class="stars">
+                                <p class="movie-properties">Voto:</p>
 
-                                <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in countingStars(movie.vote_average)" class="fas fa-star"></i>
-                                <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in (5 - countingStars(movie.vote_average))" class="far fa-star"></i>
+                                <div class="stars">
 
-                                <p v-if="countingStars(movie.vote_average) == 0">Nessun voto disponibile</p>
+                                    <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in countingStars(movie.vote_average)" class="fas fa-star"></i>
+                                    <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in (5 - countingStars(movie.vote_average))" class="far fa-star"></i>
+
+                                    <p v-if="countingStars(movie.vote_average) == 0">Nessun voto disponibile</p>
+
+                                </div>
 
                             </div>
 
+
                         </div>
+
 
 
 
@@ -131,25 +137,39 @@
                     <div class="movie-card" v-for="(series, index) in arraySearchedSeries">
 
                         <img class="movie-poster" :src="posterFound(series)" :alt="series.name">
-                        <p class="movie-properties">Titolo:</p>
-                        <p class="movie-attributes">{{ series.name }}</p>
 
-                        <p v-if="!series.name === series.original_name" class="movie-properties">Titolo in lingua originale:</p>
-                        <p v-if="!series.title === series.original_name" class="movie-attributes">{{series.original_name}}</p>
+                        <div class="movie-information">
 
-                        <p class="movie-properties">Lingua originale:</p>
-                        <img :src="'flags/'+series.original_language+'-flag.png'" :alt="series.original_language">
+                            <div class="movie-info">
 
-                        <p class="movie-properties">Voto:</p>
+                                <p class="movie-properties">Titolo:</p>
+                                <p class="movie-attributes">{{ series.name }}</p>
 
-                        <div class="stars">
+                                <p v-if="!series.name === series.original_name" class="movie-properties">Titolo in lingua originale:</p>
+                                <p v-if="!series.title === series.original_name" class="movie-attributes">{{series.original_name}}</p>
 
-                            <i v-if="countingStars(series.vote_average) >= 1" v-for="star in countingStars(series.vote_average)" class="fas fa-star"></i>
-                            <i v-if="countingStars(series.vote_average) >= 1" v-for="star in (5 - countingStars(series.vote_average))" class="far fa-star"></i>
+                                <p class="movie-properties">Lingua originale:</p>
+                                <img v-if="foundFlag(series.original_language)" :src="'flags/'+series.original_language+'-flag.png'" :alt="series.original_language">
 
-                            <p v-if="countingStars(series.vote_average) == 0">Nessun voto disponibile</p>
+                                <p v-else class="movie-attributes">{{series.original_language}}</p>
+
+                                <p class="movie-properties">Voto:</p>
+
+                                <div class="stars">
+
+                                    <i v-if="countingStars(series.vote_average) >= 1" v-for="star in countingStars(series.vote_average)" class="fas fa-star"></i>
+                                    <i v-if="countingStars(series.vote_average) >= 1" v-for="star in (5 - countingStars(series.vote_average))" class="far fa-star"></i>
+
+                                    <p v-if="countingStars(series.vote_average) == 0">Nessun voto disponibile</p>
+
+                                </div>
+
+                            </div>
 
                         </div>
+
+
+
 
                     </div>
 
