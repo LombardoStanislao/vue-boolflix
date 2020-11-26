@@ -55,7 +55,7 @@
                         <i id="lens" class="fas fa-search"></i>
                         <input id="search-title" type="search" name="" value=""
                         placeholder="Movies, Series etc..."
-                        v-model="userSearch" v-on:keyup="searchMovies(); searchSeries()">
+                        v-model="userSearch" v-on:keyup.enter="searchMovies(); searchSeries()">
                     </div>
 
                     <ul>
