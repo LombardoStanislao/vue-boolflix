@@ -1,5 +1,3 @@
-// se uso .trim sull'userSearchno
-
 
 var app = new Vue({
     el: '#root',
@@ -23,7 +21,7 @@ var app = new Vue({
         methods: {
 
             searchMovies() {
-
+                this.userSearch = this.userSearch.trim();
                 if (this.usearSearch != '') {
 
                     axios.get('https://api.themoviedb.org/3/search/movie', {
@@ -60,7 +58,7 @@ var app = new Vue({
             },
 
             searchSeries() {
-
+                this.userSearch = this.userSearch.trim();
                 if (this.userSearch != '') {
 
                     axios.get('https://api.themoviedb.org/3/search/tv', {
@@ -95,6 +93,8 @@ var app = new Vue({
 
                     });
 
+                } else {
+                    console.log('input no');
                 }
             },
         // Se uso questa funzione non mi cancella i trend
@@ -144,8 +144,6 @@ var app = new Vue({
 
             trendingNowMovies() {
 
-                if (this.arraySearchedMovies.length == 0  || this.arraySearchedSeries.length == 0) {
-
                     axios.get('https://api.themoviedb.org/3/discover/movie', {
                         params: {
                             api_key: '567c8d726bbaa8119557c0173dda861b',
@@ -154,6 +152,8 @@ var app = new Vue({
                         }
                     }).then((results) => {
 
+                        this.refreshHome();
+
                         console.log(results.data.results);
 
                         this.arrayTrendingNow = results.data.results;
@@ -161,13 +161,11 @@ var app = new Vue({
 
 
                     });
-                }
+
 
             },
 
             trendingNowSeries() {
-
-                if (this.arraySearchedMovies.length == 0  || this.arraySearchedSeries.length == 0) {
 
                     axios.get('https://api.themoviedb.org/3/discover/tv', {
                         params: {
@@ -177,15 +175,21 @@ var app = new Vue({
                         }
                     }).then((results) => {
 
+                        this.refreshHome();
+
                         console.log(results.data.results);
 
                         this.arrayTrendingSeries = results.data.results;
 
-
-
                     });
-                }
 
+            },
+
+            refreshHome() {
+                this.showTrends = true;
+                this.userSearch = '';
+                this.arraySearchedMovies.splice(0, this.arraySearchedMovies.length);
+                this.arraySearchedSeries.splice(0, this.arraySearchedSeries.length);
             }
 
             // tentativo di creare uno slider con scroll

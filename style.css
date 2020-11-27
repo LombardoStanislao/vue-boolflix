@@ -5,10 +5,6 @@
     font-family: 'Martel Sans', sans-serif;
 }
 
-.padding-20 {
-    padding:
-}
-
 ::-webkit-scrollbar {
   max-width: 20px;
   max-height: 12px;
@@ -42,8 +38,7 @@ header {
     background-color: #141414;
     display: flex;
     justify-content: space-between;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 0 20px;
     align-items: center;
 }
 
@@ -58,6 +53,7 @@ header {
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
     font-size: 3em;
+
 
 }
 
@@ -113,11 +109,10 @@ header {
     align-self: center;
     background-color: #141414;
     border: 1px solid white;
+    border-radius: 2px;
     margin-right: 10px;
     color: white;
-    padding-left: 28px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px 0 5px 28px;
 }
 
 #search-title::placeholder {
@@ -194,9 +189,6 @@ h1, h3 {
     width: 342px;
     max-height: 513px;
     border-radius: 10px;
-    -webkit-box-shadow: 6px 7px 12px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    6px 7px 12px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         6px 7px 12px 0px rgba(50, 50, 50, 0.75);
     color: white;
     margin: 20px;
     display: flex;
@@ -205,11 +197,19 @@ h1, h3 {
     align-items: center;
     cursor: pointer;
     position: relative;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+
 }
 
-.container-card:hover .movie-card {
+.flip-container {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    -webkit-box-shadow: 6px 7px 12px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    6px 7px 12px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         6px 7px 12px 0px rgba(50, 50, 50, 0.75);
+    border-radius: 15px;
+}
+
+.movie-card:hover .flip-container{
   transform: rotateY(180deg);
 }
 
@@ -220,11 +220,6 @@ h1, h3 {
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
-/*
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-} */
 
 }
 .slider-button {
