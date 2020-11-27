@@ -1,4 +1,4 @@
-// se uso .trim sull'userSearch non funziona
+// se uso .trim sull'userSearchno
 
 
 var app = new Vue({
