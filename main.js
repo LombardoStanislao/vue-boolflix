@@ -12,7 +12,9 @@ var app = new Vue({
             arraySearchedSeries: [],
             listFlag:['it', 'en', 'de', 'es', 'fr', 'ru'],
             noMovieFound: false,
+            noSeriesFound: false,
             showTrends: true,
+
 
 
 
@@ -85,7 +87,7 @@ var app = new Vue({
 
                         if (this.arraySearchedSeries.length == 0) {
 
-                            this.noMovieFound = true;
+                            this.noSeriesFound = true;
                         }
 
                         this.showTrends = false;

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/7b09a46f67.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" charset="utf-8"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -229,7 +229,10 @@
                             <p v-else class="movie-attributes">Trama non trovata</p>
 
                         </div>
+
                     </div>
+                    <h3 v-if="noMovieFound == true" class="padding-20">La ricerca non ha prodotto alcun risultato</h3>
+
                 </div>
                 <h1 v-if="!showTrends" class="film">Series:</h1>
                 <div class="container-card">
@@ -273,7 +276,7 @@
 
                     </div>
 
-                    <h3 v-if="noMovieFound == true">La ricerca non ha prodotto alcun risultato</h3>
+                    <h3 v-if="noSeriesFound == true" class="padding-20">La ricerca non ha prodotto alcun risultato</h3>
 
 
             </div>
