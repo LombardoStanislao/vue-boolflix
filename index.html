@@ -89,10 +89,64 @@
 
             <div class="container">
 
-                <h1>Benvenuto, esplora il nostro catologo</h1>
+                <h1 class="film">Film</h1>
 
 
-                <div class="container-card">
+                <div id="trending-box" class="container-card">
+
+                    <!-- TENTAVIDO DI CREARE UNO SLIDER CON SCROLL -->
+
+                    <!-- <a href="#" class="switch-left slider-button" @click="sliderScrollLeft">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <a href="#" class="switch-right slider-button" @click="sliderScrollRight()">
+                        <i class="fas fa-arrow-right"></i>
+                    </a> -->
+
+                    <div class="movie-card" v-for="(movie, index) in arrayTrendingNowMovies">
+
+                        <img id="trending-poster" class="movie-poster" :src="posterFound(movie)" :alt="movie.title">
+
+                        <div class="movie-information">
+
+                            <div class="movie-info">
+
+                                <p class="movie-properties">Titolo:</p>
+                                <p class="movie-attributes">{{ movie.title }}</p>
+
+                                <p v-if="movie.title !== movie.original_title" class="movie-properties">Titolo in lingua originale:</p>
+                                <p v-if="movie.title !== movie.original_title" class="movie-attributes">{{movie.original_title}}</p>
+
+                                <p class="movie-properties">Lingua originale:</p>
+                                <img v-if="foundFlag(movie.original_language)" :src="'flags/'+movie.original_language+'-flag.png'" :alt="movie.original_language">
+
+                                <p v-else class="movie-attributes">{{movie.original_language}}</p>
+
+                                <p class="movie-properties">Voto:</p>
+
+                                <div class="stars">
+
+                                    <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in countingStars(movie.vote_average)" class="fas fa-star"></i>
+                                    <i v-if="countingStars(movie.vote_average) >= 1" v-for="star in (5 - countingStars(movie.vote_average))" class="far fa-star"></i>
+
+                                    <p v-if="countingStars(movie.vote_average) == 0">Nessun voto disponibile</p>
+
+                                </div>
+
+                                <p class="movie-properties">Trama:</p>
+                                <p v-if="movie.overview != '' " class="movie-attributes plot">{{movie.overview}}</p>
+
+                                <p v-else class="movie-attributes">Trama non trovata</p>
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
 
                     <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
 
@@ -168,6 +222,10 @@
                                     <p v-if="countingStars(series.vote_average) == 0">Nessun voto disponibile</p>
 
                                 </div>
+                                <p class="movie-properties">Trama:</p>
+                                <p v-if="series.overview != '' " class="movie-attributes plot">{{series.overview}}</p>
+
+                                <p v-else class="movie-attributes">Trama non trovata</p>
 
                             </div>
 

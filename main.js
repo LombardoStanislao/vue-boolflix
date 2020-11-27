@@ -6,11 +6,12 @@ var app = new Vue({
 
         data: {
             userSearch: '',
+            arrayTrendingNow: [],
             arraySearchedMovies: [],
             arraySearchedSeries: [],
             listFlag:['it', 'en', 'de', 'es', 'fr', 'ru'],
             noMovieFound: false,
-        
+
 
 
         },
@@ -32,7 +33,11 @@ var app = new Vue({
 
                         console.log(results.data.results);
 
-                        this.arraySearchedMovies = results.data.results
+                        this.arraySearchedMovies = results.data.results;
+
+                        if (this.arrayTrendingNow.length >= 1) {
+                            this.arrayTrendingNow.splice(0, this.arrayTrendingNow.length)
+                        }
 
                         if (this.arraySearchedMovies.length == 0) {
 
@@ -59,12 +64,18 @@ var app = new Vue({
 
                         console.log(results.data.results);
 
-                        this.arraySearchedSeries = results.data.results
+                        this.arraySearchedSeries = results.data.results;
+
+                        if (this.arrayTrendingNow.length >= 1) {
+                            this.arrayTrendingNow.splice(0, this.arrayTrendingNow.length)
+                        }
 
                         if (this.arraySearchedSeries.length == 0) {
 
                             this.noMovieFound = true;
                         }
+
+
 
                     });
 
@@ -94,11 +105,74 @@ var app = new Vue({
                 return this.listFlag.includes(language);
             },
 
+            trendingNowMovies() {
+
+                if (this.arraySearchedMovies.length == 0  || this.arraySearchedSeries.length == 0) {
+
+                    axios.get('https://api.themoviedb.org/3/discover/movie', {
+                        params: {
+                            api_key: '567c8d726bbaa8119557c0173dda861b',
+                            language: 'it',
+
+                        }
+                    }).then((results) => {
+
+                        console.log(results.data.results);
+
+                        this.arrayTrendingNow = results.data.results;
+
+
+
+                    });
+                }
+
+            },
+
+            // tentativo di creare uno slider con scroll
+
+            // sliderScrollLeft() {
+            //     const sliders = document.getElementById('trending-box');
+            //     let scrollPerClick = document.getElementById('trending-poster').clientWidth + 20;
+            //     let imagePadding = 20;
+            //     let scrollAmount = 0;
+            //
+            //       sliders.scrollTo({
+            //         top: 0,
+            //         left: (scrollAmount -= scrollPerClick),
+            //         behavior: "smooth",
+            //       });
+            //
+            //       if (scrollAmount < 0) {
+            //         scrollAmount = 0;
+            //       }
+            //
+            //       console.log("Scroll Amount: ", scrollAmount);
+            //
+            // },
+            //
+            // sliderScrollRight() {
+            //
+            //     const sliders = document.getElementById('trending-box');
+            //     let scrollPerClick = document.getElementById('trending-poster').clientWidth + 20;
+            //     let imagePadding = 20;
+            //     let scrollAmount = 0;
+            //
+            //     if (scrollAmount <= sliders.scrollWidth - sliders.clientWidth) {
+            //         sliders.scrollTo({
+            //             top: 0,
+            //             left: (scrollAmount += scrollPerClick),
+            //             behavior: "smooth",
+            //         });
+            //       }
+            //       console.log("Scroll Amount: ", scrollAmount);
+            // }
 
         },
 
         mounted() {
 
+
+            this.trendingNowMovies();
 
 
         },
