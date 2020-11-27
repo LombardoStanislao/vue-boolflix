@@ -9,12 +9,6 @@
   max-width: 20px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 1px 1px 5px  #141414;
-  border-radius: 10px;
-}
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #141414;
@@ -161,11 +155,17 @@ h1, h3 {
     color: #032541;
 }
 
-.film {
-    align-self: flex-start;
+.trend, .film {
     padding: 20px;
     font-size: 40px;
+}
 
+.trend {
+    align-self: center;
+}
+
+.film {
+    align-self: flex-start;
 }
 
 .container-card {
@@ -233,6 +233,7 @@ h1, h3 {
     flex-wrap: wrap;
     height: 513px;
     width: 342px;
+
 }
 
 .movie-information {
@@ -266,7 +267,6 @@ h1, h3 {
 
 .plot {
     flex: 1;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: pre-wrap;
+    overflow-y: scroll;
+    white-space: initial;
 }

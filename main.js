@@ -1,4 +1,4 @@
-
+// se uso .trim sull'userSearch non funziona
 
 
 var app = new Vue({
@@ -7,10 +7,12 @@ var app = new Vue({
         data: {
             userSearch: '',
             arrayTrendingNow: [],
+            arrayTrendingSeries: [],
             arraySearchedMovies: [],
             arraySearchedSeries: [],
             listFlag:['it', 'en', 'de', 'es', 'fr', 'ru'],
             noMovieFound: false,
+            showTrends: true,
 
 
 
@@ -39,11 +41,17 @@ var app = new Vue({
                             this.arrayTrendingNow.splice(0, this.arrayTrendingNow.length)
                         }
 
+                        if (this.arrayTrendingSeries.length >= 1) {
+
+                            this.arrayTrendingSeries.splice(0, this.arrayTrendingSeries.length)
+                        }
+
                         if (this.arraySearchedMovies.length == 0) {
 
                             this.noMovieFound = true;
                         }
 
+                        this.showTrends = false;
                     });
 
                 }
@@ -70,16 +78,43 @@ var app = new Vue({
                             this.arrayTrendingNow.splice(0, this.arrayTrendingNow.length)
                         }
 
+                        if (this.arrayTrendingSeries.length >= 1) {
+
+                            this.arrayTrendingSeries.splice(0, this.arrayTrendingSeries.length)
+                        }
+
                         if (this.arraySearchedSeries.length == 0) {
 
                             this.noMovieFound = true;
                         }
 
+                        this.showTrends = false;
 
 
                     });
 
                 }
+            },
+        // Se uso questa funzione non mi cancella i trend
+            switchTrendingSearch() {
+
+                if (this.arrayTrendingNow.length >= 1) {
+                    this.arrayTrendingNow.splice(0, this.arrayTrendingNow.length)
+                }
+
+                if (this.arrayTrendingSeries.length >= 1) {
+
+                    this.arrayTrendingSeries.splice(0, this.arrayTrendingSeries.length)
+                }
+
+                if (this.arraySearchedSeries.length == 0) {
+
+                    this.noMovieFound = true;
+                }
+
+                this.showTrends = false;
+
+
             },
 
             posterFound(element) {
@@ -128,6 +163,29 @@ var app = new Vue({
 
             },
 
+            trendingNowSeries() {
+
+                if (this.arraySearchedMovies.length == 0  || this.arraySearchedSeries.length == 0) {
+
+                    axios.get('https://api.themoviedb.org/3/discover/tv', {
+                        params: {
+                            api_key: '567c8d726bbaa8119557c0173dda861b',
+                            language: 'it',
+
+                        }
+                    }).then((results) => {
+
+                        console.log(results.data.results);
+
+                        this.arrayTrendingSeries = results.data.results;
+
+
+
+                    });
+                }
+
+            }
+
             // tentativo di creare uno slider con scroll
 
             // sliderScrollLeft() {
@@ -170,9 +228,8 @@ var app = new Vue({
         },
 
         mounted() {
-
-
             this.trendingNowMovies();
+            this.trendingNowSeries();
 
 
         },

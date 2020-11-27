@@ -89,7 +89,8 @@
 
             <div class="container">
 
-                <h1 class="film">Film</h1>
+                <h1 v-if="showTrends" class="trend">Follow the trend!</h1>
+                <h1 v-if="showTrends" class="film">Movie:</h1>
 
 
                 <div id="trending-box" class="container-card">
@@ -103,7 +104,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </a> -->
 
-                    <div class="movie-card" v-for="(movie, index) in arrayTrendingNowMovies">
+                    <div class="movie-card" v-for="(movie, index) in arrayTrendingNow">
 
                         <img id="trending-poster" class="movie-poster" :src="posterFound(movie)" :alt="movie.title">
 
@@ -143,10 +144,60 @@
 
                         </div>
 
+                    </div>
 
 
+                </div>
+
+                <h1 v-if="showTrends" class="film">Series:</h1>
+                <div class="container-card">
+
+                    <div class="movie-card" v-for="(series, index) in arrayTrendingSeries">
+
+                        <img class="movie-poster" :src="posterFound(series)" :alt="series.name">
+
+                        <div class="movie-information">
+
+                            <div class="movie-info">
+
+                                <p class="movie-properties">Titolo:</p>
+                                <p class="movie-attributes">{{ series.name }}</p>
+
+                                <p v-if="series.name !== series.original_name" class="movie-properties">Titolo in lingua originale:</p>
+                                <p v-if="series.name !== series.original_name" class="movie-attributes">{{series.original_name}}</p>
+
+                                <p class="movie-properties">Lingua originale:</p>
+                                <img v-if="foundFlag(series.original_language)" :src="'flags/'+series.original_language+'-flag.png'" :alt="series.original_language">
+
+                                <p v-else class="movie-attributes">{{series.original_language}}</p>
+
+                                <p class="movie-properties">Voto:</p>
+
+                                <div class="stars">
+
+                                    <i v-if="countingStars(series.vote_average) >= 1" v-for="star in countingStars(series.vote_average)" class="fas fa-star"></i>
+                                    <i v-if="countingStars(series.vote_average) >= 1" v-for="star in (5 - countingStars(series.vote_average))" class="far fa-star"></i>
+
+                                    <p v-if="countingStars(series.vote_average) == 0">Nessun voto disponibile</p>
+
+                                </div>
+
+                                <p class="movie-properties">Trama:</p>
+                                <p v-if="series.overview != '' " class="movie-attributes plot">{{series.overview}}</p>
+
+                                <p v-else class="movie-attributes">Trama non trovata</p>
+
+                            </div>
+
+
+                        </div>
 
                     </div>
+
+
+                </div>
+                <h1 v-if="!showTrends" class="film">Movies:</h1>
+                <div class="container-card">
 
                     <div class="movie-card" v-for="(movie, index) in arraySearchedMovies">
 
@@ -192,6 +243,9 @@
 
 
                     </div>
+                </div>
+                <h1 v-if="!showTrends" class="film">Series:</h1>
+                <div class="container-card">
 
                     <div class="movie-card" v-for="(series, index) in arraySearchedSeries">
 
@@ -238,7 +292,7 @@
 
                     <h3 v-if="noMovieFound == true">La ricerca non ha prodotto alcun risultato</h3>
 
-                </div>
+
 
 
 
